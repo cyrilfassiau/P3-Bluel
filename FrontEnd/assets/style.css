@@ -177,6 +177,20 @@ nav li {
 li:hover {
   color: #b1663c;
 }
+
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+li a:hover {
+  color: #b1663c;
+}
+
+.login {
+  font-weight: bold;
+}
+
 #introduction {
   display: flex;
   align-items: center;
@@ -275,7 +289,6 @@ input[type="submit"] {
   color: white;
   background-color: #1d6154;
   margin: 2em auto;
-  width: 180px;
   text-align: center;
   border-radius: 60px;
 }
@@ -284,4 +297,59 @@ footer nav ul {
   display: flex;
   justify-content: flex-end;
   margin: 2em;
+}
+
+#login {
+  width: 50%;
+  margin: auto;
+  margin-top: 200px;
+  margin-bottom: 600px;
+}
+#login > * {
+  text-align: center;
+}
+#login h2 {
+  margin-bottom: 20px;
+}
+#login form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#login input {
+  height: 51px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  width: 379px;
+  padding: 0;
+}
+
+#login input[type="submit"] {
+  height: 36px;
+  font-size: 14px;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  width: 179px;
+  padding: 0;
+}
+#login label {
+  margin: 2em 0 1em 7em;
+}
+#login textarea {
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#name,
+#email {
+  margin: 0 auto;
+}
+
+#mdp {
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: 500;
 }
