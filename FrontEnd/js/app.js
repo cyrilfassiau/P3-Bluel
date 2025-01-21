@@ -1,83 +1,75 @@
+document.querySelector('.tous').addEventListener("click", () => getProjects())
 
-document.querySelector(".tous").addEventListener("click", () => getTravaux());
-
-
-async function getTravaux(filter) {
+async function getProjects(filtre) {
     document.querySelector(".gallery").innerHTML = "";
     try {
-        const response = await fetch("http://localhost:5678/api/works");
-     
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-   
-        const data = await response.json();
-        if (filter) {
-            const filtered = data.filter((data) => data.categoryId === filter)
-            
-            for (let i = 0; i < filtered.length; i++) {
-                ajouterFigure(filtered[i])
-            }
-        } else {
-            for (let i = 0; i < data.length; i++) {
-                ajouterFigure(data[i]);
-            }
-        }
+        const projects = await fetch('http://localhost:5678/api/works');
 
-        
+        if (!projects.ok) {
+            throw new Error(`Response status: ${projects.status}`);
+        }
+        const data = await projects.json();
+
+        if (filtre) {
+
+            const filteredProjects = data.filter((data) => data.categoryId === filtre);
+           
+            for (let i = 0; i < filteredProjects.length; i++) {
+                ajouterProjet(filteredProjects[i]);
+            }
+    
+        } else {
+        for (let i = 0; i < data.length; i++) {
+            ajouterProjet(data[i]);
+
+    } 
+}
     } catch (error) {
         console.error(error.message);
-    }
-   
+    
+   }
 }
 
-getTravaux()
-
-function ajouterFigure(data) {
-    const figure = document.createElement("figure");
-    figure.innerHTML = `<img src=${data.imageUrl} alt=${data.title} />
-            <figcaption>${data.title}</figcaption>`
-
-    document.querySelector(".gallery").append(figure);
-}
-
+getProjects()
 
 async function getCategories() {
-
-    try {
-        const response = await fetch("http://localhost:5678/api/categories");
-     
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
    
-        const data = await response.json();
-        
-        for (let i = 0; i < data.length; i++) {
-                ajouterFiltres(data[i])
+
+        try {
+            const categories = await fetch('http://localhost:5678/api/categories');
+            if (!categories.ok) {
+                throw new Error(`Response status: ${categories.status}`);
             }
-      
-
+            const dataCat = await categories.json();
+            for (let i = 0; i < dataCat.length; i++) {
+                ajouterCategorie(dataCat[i]);
+    
+        } 
+        } catch (error) {
+            console.error(error.message);
         
-    } catch (error) {
-        console.error(error.message);
-    }
+       }
+
    
 }
 
-getCategories();
+getCategories()
 
 
+function ajouterProjet(dataProjects) {
+const projo = document.createElement('projet');
+projo.innerHTML = `<img src=${dataProjects.imageUrl} alt=${dataProjects.title} />
+            <titre>${dataProjects.title}</titre>`
 
-function ajouterFiltres(data) {
-    console.log(data)
-    const filtre = document.createElement("div");
-    filtre.className = data.id;
-    filtre.addEventListener("click", () => getTravaux(data.id));
-    filtre.innerHTML = `${data.name}`;
+document.querySelector('.gallery').append(projo);
 
-    document.querySelector(".filtres").append(filtre);
-
-  
 }
 
+
+function ajouterCategorie(data) {
+const cat = document.createElement('div');
+cat.className = data.id;
+cat.addEventListener("click", () => getProjects(data.id));
+cat.innerHTML = `${data.name}`
+document.querySelector(".filtres").append(cat);
+}
