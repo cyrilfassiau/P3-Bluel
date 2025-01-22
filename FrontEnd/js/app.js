@@ -1,4 +1,7 @@
+
+
 document.querySelector('.tous').addEventListener("click", () => getProjects())
+
 
 async function getProjects(filtre) {
     document.querySelector(".gallery").innerHTML = "";
@@ -73,3 +76,52 @@ cat.addEventListener("click", () => getProjects(data.id));
 cat.innerHTML = `${data.name}`
 document.querySelector(".filtres").append(cat);
 }
+
+
+
+function editMode() {
+    if (sessionStorage.authToken) {
+        console.log(sessionStorage.authToken)
+        const editHead = document.createElement('div');
+        const header = document.querySelector('header');
+        editHead.className = 'editHead';
+        editHead.innerText = "Mode édition";
+        document.querySelector('body').insertBefore(editHead, header);
+        
+        document.getElementById("loginNav").innerText = "logout";
+        document.getElementById("loginNav").style.fontWeight = '700';
+
+
+      
+
+    }
+}
+
+editMode()
+
+
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("modBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
+

@@ -353,3 +353,113 @@ footer nav ul {
   font-size: 14px;
   font-weight: 500;
 }
+
+.erreurLogin {
+  padding-top: 15px;
+  color: red;
+}
+
+.editHead {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: 59px;
+  background-color: black;
+  width: 1440px;
+  margin-left: -150px;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  font-family: "work Sans";
+}
+
+.txtEdit {
+  padding-left: 10px;
+}
+
+header > a {
+  text-decoration: none;
+}
+
+.projetsLigne {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 630px; /* Could be more or less, depending on screen size */
+  height: 688px;
+  border-radius: 10px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modBtn {
+  cursor: pointer;
+}
+
+.modal-content > input {
+  margin-top: 150px;
+  margin-left: 200px;
+  width: 237px;
+  height: 36px;
+}
+
+.modal-content > p {
+  text-align: center;
+}
+
+.gallerySmall {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 76.86px 76.86px 76.86px 76.86px 76.86px;
+  column-gap: 8px;
+  row-gap: 15px;
+  padding-top: 50px;
+  padding-left: 100px;
+}
+
+.gallerySmall img {
+  width: 100%;
+  margin: auto;
+  align-items: center;
+}
+
+.modal-content > p {
+  font-size: 26px;
+  font-weight: 400;
+  padding-top: 50px;
+}

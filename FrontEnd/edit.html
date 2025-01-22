@@ -13,17 +13,26 @@
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
     <script src="/FrontEnd/js/app.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/ca71dbf907.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
+
   <body>
+    <div class="editHead">
+      <i class="fa-solid fa-pen-to-square"></i>
+      <div class="txtEdit">Mode édition</div>
+    </div>
     <header>
-      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+      <a href="index.html"
+        ><h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a
+      >
       <nav>
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <li id="loginNav">
-            <a href="login.html">login</a>
-          </li>
+          <li><a href="login.html" style="font-weight: bold">logout</a></li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -53,91 +62,12 @@
         </article>
       </section>
       <section id="portfolio">
-        <div class="projetsLigne">
-          <h2>Mes Projets</h2>
-          <h4 id="modBtn">modifier</h4>
-        </div>
+        <h2>Mes Projets</h2>
         <div class="filtres">
           <div class="tous">Tous</div>
         </div>
         <div class="gallery"></div>
       </section>
-      <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>Galerie photo</p>
-          <div class="gallerySmall">
-            <figure>
-              <img
-                src="assets/images/abajour-tahina.png"
-                alt="Abajour Tahina"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/appartement-paris-v.png"
-                alt="Appartement Paris V"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/restaurant-sushisen-londres.png"
-                alt="Restaurant Sushisen - Londres"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/la-balisiere.png"
-                alt="Villa “La Balisiere” - Port Louis"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/structures-thermopolis.png"
-                alt="Structures Thermopolis"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/appartement-paris-x.png"
-                alt="Appartement Paris X"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/le-coteau-cassis.png"
-                alt="Pavillon “Le coteau” - Cassis"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/villa-ferneze.png"
-                alt="Villa Ferneze - Isola d’Elba"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/appartement-paris-xviii.png"
-                alt="Appartement Paris XVIII"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/bar-lullaby-paris.png"
-                alt="Bar “Lullaby” - Paris"
-              />
-            </figure>
-            <figure>
-              <img
-                src="assets/images/hotel-first-arte-new-delhi.png"
-                alt="Hotel First Arte - New Delhi"
-              />
-            </figure>
-          </div>
-          <input type="submit" value="Ajouter une photo" />
-        </div>
-      </div>
       <section id="contact">
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>
