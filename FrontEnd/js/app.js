@@ -111,11 +111,13 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
+  getProjectsModal();
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+  document.querySelector(".gallerySmall").innerHTML = "";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -125,3 +127,33 @@ window.onclick = function(event) {
   }
 } 
 
+function ajouterProjetModal(dataProjects) {
+    const projo = document.createElement('figure');
+    projo.innerHTML = `<img src=${dataProjects.imageUrl} alt=${dataProjects.title} />
+                `
+    
+    document.querySelector('.gallerySmall').append(projo);
+    
+    }
+
+    async function getProjectsModal() {
+      
+        try {
+            const projects = await fetch('http://localhost:5678/api/works');
+    
+            if (!projects.ok) {
+                throw new Error(`Response status: ${projects.status}`);
+            }
+            const data = await projects.json();
+    
+           
+            for (let i = 0; i < data.length; i++) {
+                ajouterProjetModal(data[i]);
+    
+        } 
+    } catch (error) {
+        console.error(error.message);
+    
+   }
+        
+    }
