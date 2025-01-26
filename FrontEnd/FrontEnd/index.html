@@ -59,12 +59,9 @@
       <section id="portfolio">
         <div class="projetsLigne">
           <div class="mesProjets">Mes Projets</div>
-          <div id="modBtn" style="display: none">
-            <i class="fa-solid fa-pen-to-square"></i>
-            <div id="modif">modifier</div>
-          </div>
+          <div id="modBtn" style="display: none;"><i class="fa-solid fa-pen-to-square"></i><div id="modif">modifier</div></div>
         </div>
-        <div class="filtres" id="filtres" style="visibility: visible">
+        <div class="filtres" id="filtres" style="visibility: visible;">
           <div class="tous">Tous</div>
         </div>
         <div class="gallery"></div>
@@ -74,7 +71,9 @@
         <div class="modal-content">
           <span class="close">&times;</span>
           <p>Galerie photo</p>
-          <div class="gallerySmall"></div>
+          <div class="gallerySmall">
+            
+        </div>
           <input type="submit" value="Ajouter une photo" id="add" />
         </div>
       </div>
@@ -84,70 +83,29 @@
           <span class="close2">&times;</span>
           <p>Ajout photo</p>
           <div id="ajoutPhoto">
-            <form action="#" method="post" id="uploadForm">
-              <div
-                id="uploadContainer"
-                style="
-                  position: relative;
-                  background-color: #e8f1f6;
-                  width: 420px;
-                  margin-left: auto;
-                  margin-right: auto;
-                "
-              >
-                <button
-                  id="buttonUpload"
-                  type="button"
-                  style="
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    width: 420px;
-                    height: 169px;
-                    margin: auto;
-                    border-radius: 3px;
-                    border: none;
-                    background-color: #e8f1f6;
-                    gap: 5px;
-                  "
-                >
-                  <i
-                    class="fa-solid fa-image"
-                    style="font-size: 24px; color: #777"
-                  ></i>
-                  <p style="font-size: 14px; color: #777">+ Ajouter photo</p>
-                  <input
-                    id="uploadInput"
-                    type="file"
-                    accept=".jpg, .jpeg"
-                    style="display: none"
-                  />
-                  <div class="uploadBtn">Choisir un fichier</div>
-                </button>
-                <img
-                  id="previewImage"
-                  src=""
-                  alt="Aperçu de l'image"
-                  style="
-                    display: none;
-                    width: 420px;
-                    height: 169px;
-                    object-fit: contain;
-                    margin: auto;
-                    border-radius: 3px;
-                  "
-                />
-              </div>
-
-              <label for="title">Titre</label>
-              <input type="text" name="title" id="email" />
-
-              <label for="cat">Catégories</label>
-              <select id="cat" name="Catégories"></select>
-              <input type="submit" value="Valider" />
+           
+    
+            <form action="#" method="post">
+              <button id="buttonUpload" style="z-index: 0;">
+                <i class="fa-solid fa-image"></i>
+                <input id="uploadInput" type="file" multiple style="z-index: 1; opacity: 0;" />
+                <div class="uploadBtn"><p style="z-index: 0;">+ Ajouter photo</p></div>
+                <p class="taille">jpg, png : 4mo max</p>
+              </button>
+              
+              <label for="email">Titre</label>
+              <input type="email" name="email" id="email" />
+              <label for="email">Catégories</label>
+              <select id="cat" name="Catégories">
+               
+              </select>
+    
+              <input type="submit" value="Se connecter" id="log" />
             </form>
-          </div>
+    
+            <p id="mdp">Mot de passe oublié</p>
+          </div >
+          <input type="submit" value="Valider" />
         </div>
       </div>
       <section id="contact">
@@ -174,6 +132,7 @@
     </footer>
   </body>
 </html>
+
 
 <!-- <figure>
           

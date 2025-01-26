@@ -132,11 +132,7 @@ span.onclick = function() {
 
 span2.onclick = function() {
     modal2.style.display = "none";
-    modal.style.display = "none";  
-    document.querySelector(".gallerySmall").innerHTML = "";  
-    uploadInput.value = ""; // Réinitialiser l'input de fichier
-  previewImage.style.display = "none"; // Cacher l'aperçu de l'image
-  buttonUpload.style.display = "flex"; // Réafficher le bouton
+    modal.style.display = "none";    
   }
 
 
@@ -150,10 +146,6 @@ window.onclick = function(event) {
   } else if (event.target == modal2) {
     modal2.style.display = "none";
     modal.style.display = "none";
-    document.querySelector(".gallerySmall").innerHTML = "";  
-    uploadInput.value = ""; // Réinitialiser l'input de fichier
-  previewImage.style.display = "none"; // Cacher l'aperçu de l'image
-  buttonUpload.style.display = "flex"; // Réafficher le bouton
     
  
   }
@@ -260,89 +252,30 @@ function ajouterCategorieModal(data) {
     getCategoriesForModal()
 
 
-
-
-
-
-const uploadInput = document.getElementById('uploadInput');
-const buttonUpload = document.getElementById('buttonUpload');
-const previewImage = document.getElementById('previewImage');
-const uploadContainer = document.getElementById('uploadContainer');
-
-// Ouvrir le sélecteur de fichier lors du clic sur le bouton
-buttonUpload.addEventListener('click', function () {
-  uploadInput.click();
-});
-
-// Prévisualiser l'image sélectionnée
-uploadInput.addEventListener('change', function (event) {
-  const file = event.target.files[0];
-
-  
-
-  // Afficher l'image en tant qu'aperçu
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    previewImage.src = e.target.result;
-    console.log(previewImage.src) // Charger l'image dans l'aperçu
-    previewImage.style.display = 'block'; // Afficher l'image
-    buttonUpload.style.display = 'none'; // Cacher le bouton
-    
-    reader.onerror = function () {
-      alert("Une erreur s'est produite lors du chargement du fichier.");
-    };
-  };
-  reader.readAsDataURL(file); // Lire le fichier comme URL de données
-});
-
-
-
-document.getElementById("uploadForm").addEventListener("submit", async function (event) {
-  event.preventDefault(); // Empêche le rechargement de la page
-  
-  const uploadInput = document.getElementById("uploadInput");
-  const titleInput = document.getElementById("email");
-  const categorySelect = document.getElementById("cat");
-
-  // Vérifier que tous les champs sont remplis
-  if (!uploadInput.files[0] || !titleInput.value || !categorySelect.value) {
-    alert("Veuillez remplir tous les champs avant de soumettre.");
-    return;
-  }
-
-  // Préparer les données du formulaire
-  const formData = new FormData();
-  formData.append("image", uploadInput.files[0]); // Ajouter l'image
-  formData.append("title", titleInput.value); // Ajouter le titre
-  formData.append("category", categorySelect.value); // Ajouter la catégorie
-
-  try {
-    // Envoyer la requête POST à l'API
-    const token = sessionStorage.authToken;
-    const response = await fetch("http://localhost:5678/api/works", {
-      method: "POST",
-      headers: {
-        // Note : `Content-Type` n'est pas défini ici, car `FormData` le gère automatiquement
-        Authorization: "Bearer" + " " + token, // Remplacez par le token si requis
-      },
-      body: formData, // Ajouter les données du formulaire
-    });
-
-    // Vérifier la réponse de l'API
-    if (response.ok) {
-      const result = await response.json();
-      alert("Le fichier a été envoyé avec succès !");
-      document.querySelector(".gallerySmall").innerHTML = "";
-    document.querySelector(".gallery").innerHTML = "";
-    getProjectsModal()
-    getProjects()
-      console.log(result); // Log des données de la réponse pour vérification
-    } else {
-      const errorData = await response.json();
-      alert(`Erreur : ${errorData.message || "Une erreur est survenue."}`);
+    const uploadInput = document.getElementById("uploadInput");
+uploadInput.addEventListener(
+  "change",
+  () => {
+    // Calcul de la taille totale
+    let numberOfBytes = 0;
+    for (const file of uploadInput.files) {
+      numberOfBytes += file.size;
     }
-  } catch (error) {
-    console.error("Erreur lors de la requête :", error);
-    alert("Impossible d'envoyer les données. Veuillez réessayer.");
-  }
-});
+
+    // Approximation à l'unité humaine la plus proche
+    const units = ["o", "Ko", "Mo", "Go", "To", "Po", "Eo", "Zo", "Yo"];
+    const exponent = Math.min(
+      Math.floor(Math.log(numberOfBytes) / Math.log(1024)),
+      units.length - 1,
+    );
+    const approx = numberOfBytes / 1024 ** exponent;
+    const output =
+      exponent === 0
+        ? `${numberOfBytes} octets`
+        : `${approx.toFixed(3)} ${units[exponent]} (${numberOfBytes} octets)`;
+
+    document.getElementById("fileNum").textContent = uploadInput.files.length;
+    document.getElementById("fileSize").textContent = output;
+  },
+  false,
+);

@@ -225,6 +225,7 @@ li a:hover {
   display: flex;
   justify-content: space-evenly;
   margin: 35px auto;
+  
 }
 
 .filtres > * {
@@ -413,7 +414,7 @@ header > a {
 .close:hover,
 .close:focus,
 .close2:hover,
-.close2:focus {
+.close2:focus  {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -427,14 +428,14 @@ header > a {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: none; /* Enable scroll if needed */
+  overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   margin-left: auto;
   margin-right: auto;
 }
 
-.modal2 {
+.modal2{
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 3; /* Sit on top */
@@ -442,8 +443,8 @@ header > a {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: none; /* Enable scroll if needed */
-
+  overflow: auto; /* Enable scroll if needed */
+  
   margin-left: auto;
   margin-right: auto;
 }
@@ -491,7 +492,7 @@ header > a {
 }
 
 figure {
-  position: relative;
+  position:relative;
 }
 
 .fa-trash-can {
@@ -504,10 +505,10 @@ figure {
 }
 
 .divPic {
-  position: absolute;
+  position:absolute;
   background-color: black;
   z-index: 2;
-  top: 5px;
+  top: 5px; 
   right: 5px;
   width: 17px;
   height: 17px;
@@ -519,22 +520,25 @@ figure {
   cursor: pointer;
 }
 
-.mesProjets {
+.mesProjets{
   margin-bottom: 0;
   font-weight: 700;
   font-family: "syne";
   color: #1d6154;
   font-size: 30px;
   line-height: 36px;
+  
 }
 
 #modif {
   font-size: 14px;
+  
 }
 
 .fa-pen-to-square {
   font-size: 15.58px;
 }
+
 
 #ajoutPhoto > * {
   text-align: center;
@@ -551,7 +555,7 @@ figure {
 }
 
 #ajoutPhoto input,
-#ajoutPhoto select {
+#ajoutPhoto select{
   height: 51px;
   font-size: 1.2em;
   border: none;
@@ -570,6 +574,7 @@ figure {
 }
 #ajoutPhoto label {
   margin: 2em 0 1em 8em;
+
 }
 #ajoutPhoto textarea {
   border: none;
@@ -587,12 +592,12 @@ figure {
   margin-right: auto;
   border-radius: 3px;
   border: none;
-  background-color: #e8f1f6;
+  background-color: #E8F1F6;
   gap: 5px;
 }
 
-.uploadBtn {
-  background-color: #cbd6dc;
+.uploadBtn{
+  background-color: #CBD6DC;
   width: 173px;
   height: 36px;
   border-radius: 50px;
@@ -602,19 +607,20 @@ figure {
   font-size: 14px;
 }
 
+
+
 #buttonUpload > #uploadInput {
-  display: none;
+  height: 0px;
 }
 
-.fa-image {
+
+
+.fa-image{
   font-size: 68px;
-  color: #b9c5cc;
+  color: #B9C5CC;
+
 }
 
 .taille {
   font-size: 10px;
-}
-
-#add {
-  cursor: pointer;
 }
