@@ -270,6 +270,9 @@ const uploadInput = document.getElementById('uploadInput');
 const buttonUpload = document.getElementById('buttonUpload');
 const previewImage = document.getElementById('previewImage');
 const uploadContainer = document.getElementById('uploadContainer');
+const submitButton = document.getElementById("valider");
+
+
 
 // Ouvre le sélecteur de fichier lors du clic sur le bouton
 buttonUpload.addEventListener('click', function () {
@@ -343,6 +346,10 @@ document.getElementById("uploadForm").addEventListener("submit", async function 
     if (response.ok) {
       const result = await response.json();
       alert("Le fichier a été envoyé avec succès !");
+      document.getElementById("uploadForm").reset();
+      previewImage.style.display = "none"; // Masquer l'aperçu de l'image
+      previewImage.src = ""; // Supprimer la source de l'image
+      buttonUpload.style.display = "flex"; // Réafficher le bouton d'upload
       document.querySelector(".gallerySmall").innerHTML = "";
     document.querySelector(".gallery").innerHTML = "";
     getProjectsModal()
@@ -357,3 +364,30 @@ document.getElementById("uploadForm").addEventListener("submit", async function 
     alert("Impossible d'envoyer les données. Veuillez réessayer.");
   }
 });
+
+
+document.getElementById("loginNav").addEventListener("click", function() {
+  if (document.querySelector('.editHead')) {
+      exitEditMode();
+  } else {
+      if (sessionStorage.authToken) {
+          editMode();
+      } else {
+          window.location.href = "login.html"; // Redirection vers la page de connexion
+      }
+  }
+});
+
+function exitEditMode() {
+  sessionStorage.clear(); // Vide complètement le sessionStorage
+
+  const editHead = document.querySelector('.editHead');
+  if (editHead) {
+      editHead.remove();
+  }
+
+  document.getElementById("loginNav").innerText = "login";
+  document.getElementById("loginNav").style.fontWeight = 'normal';
+  document.getElementById("filtres").style.visibility = "visible";
+  document.getElementById("modBtn").style.display = "none";
+}
