@@ -2,6 +2,7 @@ const loginApi = "http://localhost:5678/api/users/login"
 
 document.getElementById("log").addEventListener("click", logIn);
 
+// Récupère les données input et vérifié qu'elles soient correctes
 
 async function logIn(event){
     event.preventDefault();
@@ -30,6 +31,8 @@ async function logIn(event){
 
     
 }
+
+// Affiche l'erreur si le login n'est pas bon
 
 function erreurLogin() {
 const erreur = document.createElement('p');
