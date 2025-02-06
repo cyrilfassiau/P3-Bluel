@@ -35,10 +35,13 @@ async function logIn(event){
 // Affiche l'erreur si le login n'est pas bon
 
 function erreurLogin() {
-const erreur = document.createElement('p');
-erreur.className = 'erreurLogin';
-erreur.innerText = 'Erreur dans l’identifiant ou le mot de passe'
-document.querySelector('#login').append(erreur);
+    let existingError = document.querySelector('.erreurLogin');
+    if (!existingError) {
+        const erreur = document.createElement('p');
+        erreur.className = 'erreurLogin';
+        erreur.innerText = 'Erreur dans l’identifiant ou le mot de passe';
+        document.querySelector('#login').append(erreur);
+    }
 
 
 
