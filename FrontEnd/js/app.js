@@ -2,6 +2,7 @@
 
 document.querySelector('.tous').addEventListener("click", () => getProjects())
 
+// Recupère les projets dans l'API 
 
 async function getProjects(filtre) {
     document.querySelector(".gallery").innerHTML = "";
@@ -35,6 +36,8 @@ async function getProjects(filtre) {
 
 getProjects()
 
+// Récupère les catégories dans l'API
+
 async function getCategories() {
    
 
@@ -58,6 +61,7 @@ async function getCategories() {
 
 getCategories()
 
+// Ajoute les projets dans l'HTML
 
 function ajouterProjet(dataProjects) {
 const projo = document.createElement('projet');
@@ -68,6 +72,7 @@ document.querySelector('.gallery').append(projo);
 
 }
 
+// Ajoute les filtres dans l'HTML
 
 function ajouterCategorie(data) {
 const cat = document.createElement('div');
@@ -78,6 +83,7 @@ document.querySelector(".filtres").append(cat);
 }
 
 
+// Si il y a un token dans le sessionStorage, modifie l'index.html avec les droits d'administrateur
 
 function editMode() {
     if (sessionStorage.authToken) {
@@ -100,19 +106,15 @@ function editMode() {
 editMode()
 
 
-var modal = document.getElementById("myModal");
-var modal2 = document.getElementById("myModal2");
+let modal = document.getElementById("myModal");
+let modal2 = document.getElementById("myModal2");
+let btn = document.getElementById("modBtn");
+let btn2 = document.getElementById("add");
+let span = document.getElementsByClassName("close")[0];
+let span2 = document.getElementsByClassName("close2")[0];
 
-// Get the button that opens the modal
-var btn = document.getElementById("modBtn");
-var btn2 = document.getElementById("add");
+// Ouvre la modal en cliquant sur le bouton
 
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-var span2 = document.getElementsByClassName("close2")[0];
-
-// When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
   getProjectsModal();
@@ -124,7 +126,7 @@ btn2.onclick = function() {
 
 
 
-// When the user clicks on <span> (x), close the modal
+// Ferme la modal en cliquant sur le X
 span.onclick = function() {
   modal.style.display = "none";
   document.querySelector(".gallerySmall").innerHTML = "";
@@ -134,14 +136,15 @@ span2.onclick = function() {
     modal2.style.display = "none";
     modal.style.display = "none";  
     document.querySelector(".gallerySmall").innerHTML = "";  
-    uploadInput.value = ""; // Réinitialiser l'input de fichier
-  previewImage.style.display = "none"; // Cacher l'aperçu de l'image
-  buttonUpload.style.display = "flex"; // Réafficher le bouton
+    uploadInput.value = "";
+  previewImage.style.display = "none"; 
+  buttonUpload.style.display = "flex"; 
   }
 
 
 
-// When the user clicks anywhere outside of the modal, close it
+// Ferme la modal en cliquant à l'extérieur de la fenetre
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -151,17 +154,14 @@ window.onclick = function(event) {
     modal2.style.display = "none";
     modal.style.display = "none";
     document.querySelector(".gallerySmall").innerHTML = "";  
-    uploadInput.value = ""; // Réinitialiser l'input de fichier
-  previewImage.style.display = "none"; // Cacher l'aperçu de l'image
-  buttonUpload.style.display = "flex"; // Réafficher le bouton
-    
- 
+    uploadInput.value = "";
+  previewImage.style.display = "none"; 
+  buttonUpload.style.display = "flex"; 
+
   }
 } 
 
-
-
- 
+// Ajout des projets dans la modal
 
 function ajouterProjetModal(dataProjects) {
     const projo = document.createElement('figure');
@@ -183,9 +183,9 @@ function ajouterProjetModal(dataProjects) {
     document.querySelector('.gallerySmall').append(projo);
     picDiv.addEventListener("click", (event) => deleteProject(event) )
  
- 
-
     }
+
+  // Appel des projets pour la modal
 
     async function getProjectsModal() {
       
@@ -209,6 +209,8 @@ function ajouterProjetModal(dataProjects) {
         
     }
 
+// Suppression des projets
+
 async function deleteProject(event) {
  
     const id = event.srcElement.id;
@@ -228,7 +230,7 @@ async function deleteProject(event) {
     getProjects()
     }
     
-    
+
     async function getCategoriesForModal() {
    
 
@@ -269,24 +271,30 @@ const buttonUpload = document.getElementById('buttonUpload');
 const previewImage = document.getElementById('previewImage');
 const uploadContainer = document.getElementById('uploadContainer');
 
-// Ouvrir le sélecteur de fichier lors du clic sur le bouton
+// Ouvre le sélecteur de fichier lors du clic sur le bouton
 buttonUpload.addEventListener('click', function () {
   uploadInput.click();
 });
 
-// Prévisualiser l'image sélectionnée
+// Prévisualise l'image sélectionnée
 uploadInput.addEventListener('change', function (event) {
   const file = event.target.files[0];
 
   
 
-  // Afficher l'image en tant qu'aperçu
+  // Affiche l'image en tant qu'aperçu
+
   const reader = new FileReader();
   reader.onload = function (e) {
     previewImage.src = e.target.result;
-    console.log(previewImage.src) // Charger l'image dans l'aperçu
-    previewImage.style.display = 'block'; // Afficher l'image
-    buttonUpload.style.display = 'none'; // Cacher le bouton
+    console.log(previewImage.src) // Charge l'image dans l'aperçu
+    // Afficher l'image
+
+    previewImage.style.display = 'block';
+
+    // Cacher le bouton
+
+    buttonUpload.style.display = 'none'; 
     
     reader.onerror = function () {
       alert("Une erreur s'est produite lors du chargement du fichier.");
@@ -298,37 +306,37 @@ uploadInput.addEventListener('change', function (event) {
 
 
 document.getElementById("uploadForm").addEventListener("submit", async function (event) {
-  event.preventDefault(); // Empêche le rechargement de la page
+  event.preventDefault(); 
   
   const uploadInput = document.getElementById("uploadInput");
   const titleInput = document.getElementById("email");
   const categorySelect = document.getElementById("cat");
 
-  // Vérifier que tous les champs sont remplis
+  // Vérifie que tous les champs sont remplis
   if (!uploadInput.files[0] || !titleInput.value || !categorySelect.value) {
     alert("Veuillez remplir tous les champs avant de soumettre.");
     return;
   }
 
-  // Préparer les données du formulaire
+  // Prépare les données du formulaire
   const formData = new FormData();
-  formData.append("image", uploadInput.files[0]); // Ajouter l'image
-  formData.append("title", titleInput.value); // Ajouter le titre
-  formData.append("category", categorySelect.value); // Ajouter la catégorie
+  formData.append("image", uploadInput.files[0]); 
+  formData.append("title", titleInput.value);
+  formData.append("category", categorySelect.value); 
 
   try {
-    // Envoyer la requête POST à l'API
+    
     const token = sessionStorage.authToken;
     const response = await fetch("http://localhost:5678/api/works", {
       method: "POST",
       headers: {
-        // Note : `Content-Type` n'est pas défini ici, car `FormData` le gère automatiquement
-        Authorization: "Bearer" + " " + token, // Remplacez par le token si requis
+        
+        Authorization: "Bearer" + " " + token,
       },
-      body: formData, // Ajouter les données du formulaire
+      body: formData, // Ajoute les données du formulaire
     });
 
-    // Vérifier la réponse de l'API
+    // Vérifie la réponse de l'API
     if (response.ok) {
       const result = await response.json();
       alert("Le fichier a été envoyé avec succès !");
@@ -336,7 +344,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function 
     document.querySelector(".gallery").innerHTML = "";
     getProjectsModal()
     getProjects()
-      console.log(result); // Log des données de la réponse pour vérification
+      console.log(result);
     } else {
       const errorData = await response.json();
       alert(`Erreur : ${errorData.message || "Une erreur est survenue."}`);
