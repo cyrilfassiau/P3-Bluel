@@ -8,7 +8,7 @@ async function logIn(event){
     event.preventDefault();
     let user = {
         email: document.getElementById("email").value, 
-        password: document.getElementById("name").value,
+        password: document.getElementById("password").value,
     };
     
     let response = await fetch(loginApi, {
