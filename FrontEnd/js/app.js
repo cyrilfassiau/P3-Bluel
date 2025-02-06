@@ -279,9 +279,12 @@ buttonUpload.addEventListener('click', function () {
 // Prévisualise l'image sélectionnée
 uploadInput.addEventListener('change', function (event) {
   const file = event.target.files[0];
-
+  const maxSize = 4 * 1024 * 1024; // 4 Mo en octets
+  if (file.size > maxSize) {
+    alert("L'image est trop volumineuse. Taille maximale : 4 Mo.");
+    return; // Arrête l'exécution
+  }
   
-
   // Affiche l'image en tant qu'aperçu
 
   const reader = new FileReader();
