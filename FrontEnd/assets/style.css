@@ -345,14 +345,25 @@ footer nav ul {
 
 #name,
 #email,
-#cat {
+#cat,
+#password {
   margin: 0 auto;
 }
 
+#cat {
+  cursor: pointer;
+}
+#envoyer {
+  width: 179px;
+}
 #mdp {
   text-decoration: underline;
   font-size: 14px;
   font-weight: 500;
+}
+
+#loginNav {
+  cursor: pointer;
 }
 
 .erreurLogin {
@@ -556,8 +567,8 @@ figure {
   font-size: 1.2em;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-  width: 420px;
-  padding: 0;
+  width: 410px;
+  padding: 0 0 0 10px; /* Padding de 20px uniquement à gauche */
 }
 
 #ajoutPhoto input[type="submit"] {
@@ -565,8 +576,9 @@ figure {
   font-size: 14px;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-  width: 179px;
+  width: 237px;
   padding: 0;
+  margin-top: 50px;
 }
 #ajoutPhoto label {
   margin: 2em 0 1em 8em;
@@ -616,5 +628,13 @@ figure {
 }
 
 #add {
+  cursor: pointer;
+}
+
+#valider {
+  cursor: pointer;
+}
+
+#buttonUpload {
   cursor: pointer;
 }
